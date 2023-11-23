@@ -131,6 +131,23 @@ void displayList(struct DoublyLinkedList* list) {
     }
 }
 
+// Function to reverse the doubly linked list
+void reverseList(struct DoublyLinkedList* list) {
+    struct Node *temp = NULL, *current = list->head;
+
+    while (current != NULL) {
+        temp = current->prev;
+        current->prev = current->next;
+        current->next = temp;
+        current = current->prev;
+    }
+
+    if (temp != NULL) {
+        list->head = temp->prev;
+    }
+}
+
+
 int main() {
     struct DoublyLinkedList list;
     initializeList(&list);
