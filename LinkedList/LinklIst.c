@@ -36,6 +36,23 @@ void insertAtFront(struct LinkedList* list, int data) {
     list->head = newNode;
 }
 
+// Function to reverse the linked list
+void reverseList(struct LinkedList* list) {
+    struct Node* prev = NULL;
+    struct Node* current = list->head;
+    struct Node* next = NULL;
+
+    while (current != NULL) {
+        next = current->next;
+        current->next = prev;
+        prev = current;
+        current = next;
+    }
+
+    list->head = prev;
+}
+
+
 // Function to insert an element at the end of the list
 void insertAtEnd(struct LinkedList* list, int data) {
     struct Node* newNode = createNode(data);
